@@ -3,4 +3,8 @@ class UsersController < ApplicationController
         @users = User.all 
         render json: @users
     end
+
+    def destroy
+        @user.destroy 
+    end
 end
