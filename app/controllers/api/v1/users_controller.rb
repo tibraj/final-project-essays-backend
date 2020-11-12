@@ -5,6 +5,19 @@ class Api::V1::UsersController < ApplicationController
         render json: @users
     end
 
+    def create 
+        @user = user.new(user_params)
+        if @user.save
+            session[:user_id] = @user.id 
+            render json: @user, status: :created
+        else 
+            response = {
+                error: @user.errors.full_messages.to_sentence
+            }
+            render json: response, status: :unprocessable_entity
+        end 
+    end 
+
     def destroy
         @user.destroy 
     end
