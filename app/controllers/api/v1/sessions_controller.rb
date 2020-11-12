@@ -8,4 +8,9 @@ class Api::V1::SessionsController < ApplicationController
             render json: {error: "Invalid Entry"}
         end 
     end
+
+    def destroy 
+        session.clear 
+        render json: {notice: "You have successfully logged out."}
+    end
 end
