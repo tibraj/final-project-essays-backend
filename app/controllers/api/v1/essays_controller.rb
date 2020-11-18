@@ -1,6 +1,8 @@
 class Api::V1::EssaysController < ApplicationController
     def index
-        @essays = Essay.all 
-        render json: @essays
+        if logged_in?
+            @essays = current_user.essays
+            render json: @essays
+        end
     end
 end
