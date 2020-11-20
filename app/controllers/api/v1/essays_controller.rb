@@ -22,6 +22,18 @@ class Api::V1::EssaysController < ApplicationController
         render json: @essay 
     end
 
+    def destroy 
+        @essay = Essay.find(params[:id])
+        if @essay.destroy 
+            render json: {message: "Essay successfully deleted."}, status: :ok
+        else 
+            response = {
+                error: "No Essay Found"
+            }
+            render json: response, status: :unprocessable_entity
+        end 
+    end
+
     
     private 
 
