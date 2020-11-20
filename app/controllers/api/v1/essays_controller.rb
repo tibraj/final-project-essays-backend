@@ -38,6 +38,6 @@ class Api::V1::EssaysController < ApplicationController
     private 
 
     def essay_params
-        params.require(:essay).permit(:title, :date, :description)
+        params.require(:essay).permit(:title, :content)
     end
 end
