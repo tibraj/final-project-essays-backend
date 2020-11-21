@@ -1,4 +1,5 @@
 class Api::V1::EssaysController < ApplicationController
+    before_action :logged_in?
     def index
         @essays = Essay.all
         render json: @essays
