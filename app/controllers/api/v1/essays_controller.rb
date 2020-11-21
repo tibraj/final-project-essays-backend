@@ -1,5 +1,4 @@
 class Api::V1::EssaysController < ApplicationController
-    before_action :logged_in?
     def index
         @essays = Essay.all
         render json: @essays
@@ -11,7 +10,7 @@ class Api::V1::EssaysController < ApplicationController
             render json: @essay, status: :created
         else 
             response = {
-                error: essay.errors.full_messages.to_sentence
+                error: @essay.errors.full_messages.to_sentence
             }
             render json: response, status: :unprocessable_entity
         end 
