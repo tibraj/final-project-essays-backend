@@ -10,10 +10,7 @@ class Api::V1::EssaysController < ApplicationController
         if @essay.save
             render json: @essay, status: :created
         else 
-            response = {
-                error: @essay.errors.full_messages.to_sentence
-            }
-            render json: response, status: :unprocessable_entity
+            render json: {error: "Both text fields must be filled."}
         end 
     end
 
